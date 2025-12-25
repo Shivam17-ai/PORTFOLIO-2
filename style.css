@@ -105,12 +105,55 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
+            text-align: left;
             position: relative;
+        }
+
+        .hero-layout {
+            width: min(1200px, calc(100% - 4rem));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+        }
+
+        .hero-left {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .hero-right {
+            flex: 0 0 auto;
+        }
+
+        .hero-image-placeholder {
+            width: 320px;
+            height: 320px;
+            background: #FFD43B;
         }
 
         .hero-content {
             animation: slideUp 1s ease-out;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                height: auto;
+                padding-top: 7rem;
+                padding-bottom: 3rem;
+            }
+
+            .hero-layout {
+                width: calc(100% - 2rem);
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 2rem;
+            }
+
+            .hero-image-placeholder {
+                width: min(320px, calc(100vw - 2rem));
+                height: min(320px, calc(100vw - 2rem));
+            }
         }
 
         @keyframes slideUp {
@@ -324,10 +367,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
             font-weight: bold;
-            color: white;
             transition: all 0.3s ease;
+        }
+        .tech-icon img {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+            display: block;
+        }
+
+        /* Ensure monochrome SVG logos stay readable on dark backgrounds */
+        .tech-icon img.is-mono {
+            filter: invert(1);
         }
 
         .tech-name {
@@ -342,20 +394,22 @@
             line-height: 1.4;
         }
 
-        /* Tech specific colors */
-        .cpp { background: linear-gradient(45deg, #00599C, #004B87); }
-        .python { background: linear-gradient(45deg, #3776AB, #FFD43B); }
-        .java { background: linear-gradient(45deg, #ED8B00, #F89820); }
-        .react { background: linear-gradient(45deg, #61DAFB, #21232A); }
-        .nodejs { background: linear-gradient(45deg, #339933, #66BB6A); }
-        .express { background: linear-gradient(45deg, #000000, #404040); }
-        .tailwind { background: linear-gradient(45deg, #06B6D4, #0EA5E9); }
-        .html { background: linear-gradient(45deg, #E34F26, #F16529); }
-        .css { background: linear-gradient(45deg, #1572B6, #33A9DC); }
-        .mongodb { background: linear-gradient(45deg, #47A248, #4DB33D); }
-        .git { background: linear-gradient(45deg, #F05032, #E84E31); }
-        .github { background: linear-gradient(45deg, #181717, #333333); }
-        .shadcn { background: linear-gradient(45deg, #000000, #333333); }
+        /* Remove Tech Stack icon gradients */
+        .cpp,
+        .python,
+        .java,
+        .react,
+        .nodejs,
+        .express,
+        .tailwind,
+        .html,
+        .css,
+        .mongodb,
+        .git,
+        .github,
+        .shadcn {
+            background: transparent;
+        }
 
         /* Projects Section */
         .projects-grid {
@@ -580,5 +634,27 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
-
         }
+.hero-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+}
+
+.hero-image-placeholder {
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 1 / 1;
+    border-radius: 20px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #6aa9ff, #9fd3ff);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+}
+
+.hero-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
